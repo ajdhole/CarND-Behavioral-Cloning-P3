@@ -97,7 +97,7 @@ def generator(path, samples, batch_size=128):
 
 # ------ Training/Validation data loading -------
 
-path = './data_Udacity/'
+path = './data/'
 
 samples = get_driving_log(path)
 
@@ -115,7 +115,7 @@ def resize_im(x):
     return tf.image.resize_images(x, (80, 160))
 
 model = Sequential()
-model.add(Cropping2D(cropping=((40,10), (0,0)), input_shape=(160,320,3)))
+model.add(Cropping2D(cropping=((40,20), (0,0)), input_shape=(160,320,3)))
 model.add(Lambda(lambda x: x / 127.5 - 1))
 model.add(Lambda(resize_im))
 
